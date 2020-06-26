@@ -15,6 +15,9 @@ TOKEN = '1231896443:AAF9pBdS3iXQhz_7gZwtOFPIC6S3Dto35ek'
 
 # Define a few command handlers. These usually take the two arguments update and
 # context. Error handlers also receive the raised TelegramError object in error.
+def start(update, context):
+    update.message.reply_text('Введите Id контракта (пр. /getBalance 1)')
+
 def getBalance(update, context):
     try:
         int(update.message.text())
@@ -50,7 +53,8 @@ def main():
     dp = updater.dispatcher
 
     # on different commands - answer in Telegram
-    dp.add_handler(CommandHandler("start", getBalance))
+    dp.add_handler(CommandHandler("start", start))
+    dp.add_handler(CommandHandler("getBalance", getBalance))
     dp.add_handler(CommandHandler("help", help))
 
     # log all errors
