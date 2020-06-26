@@ -26,7 +26,7 @@ def getBalance(update, context):
         update.message.reply_text('Введите число')
         return
 
-    clnt = http.client.HTTPConnection('test-ua.herokuapp.com', timeout=10)
+    clnt = http.client.HTTPConnection('test-ua.herokuapp.com', timeout=60)
     clnt.request('GET','/api/Report?contractId=' + update.message.text[12:])
     res = clnt.getresponse()
     resBody = res.read().decode('utf-8')
