@@ -20,7 +20,7 @@ def start(update, context):
 
 def getBalance(update, context):
     try:
-        logger("DEBUG:" + update.message.text[12:])
+        logger.debug("DEBUG:" + update.message.text[12:])
         int(update.message.text[12:])
     except ValueError:
         update.message.reply_text('Введите число')
