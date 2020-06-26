@@ -20,14 +20,14 @@ def start(update, context):
 
 def getBalance(update, context):
     try:
-        print("DEBUG:" + update.message.text()[12:])
+        print("DEBUG:" + update.message.text[12:])
         int(update.message.text()[12:])
     except ValueError:
         update.message.reply_text('Введите число')
         return
 
     clnt = http.client.HTTPConnection('test-ua.herokuapp.com', timeout=10)
-    clnt.request('GET','/api/Report?contractId=' + update.message.text()[12:])
+    clnt.request('GET','/api/Report?contractId=' + update.message.text[12:])
     res = clnt.getresponse()
     resBody = res.read().decode('utf-8')
     clnt.close()
